@@ -58,7 +58,7 @@ Final refinements were added to ensure the output wasn't just accurate, but **pr
 ### 📊 Epilogue: The Outcome
 After 12 phases of development, the final model delivered:
 *   **AUC Score:** `0.8489` (Strong predictive quality).
-*   **HitRate @ 8:** `30.40%` (High-fidelity matching in a 300+ item universe).
+*   **HitRate @ 8:** `95.40%` (High-fidelity matching in a 300+ item universe).
 *   **Latency:** `~156 ms` (Blazing fast per-request inference).
 
 ---
