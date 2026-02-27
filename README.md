@@ -18,7 +18,7 @@ At the start of this project, we faced a classic "Generic Fallback" problem. Wit
 ### 🏗️ Chapter 1: The Two-Stage Blueprint
 To achieve intelligence at scale, we adopted an industry-standard **Two-Stage Funnel**:
 
-1.  **Stage 1 - Retrieval:** Narrowing down the 300-item universe to the Top 50 best candidates using high-speed vector math.
+1.  **Stage 1 - Retrieval:** Narrowing down the ~300 synthetic menu items across 7 cuisines universe to the Top 50 best candidates using high-speed vector math.
 2.  **Stage 2 - Ranking:** Using a heavy-duty Machine Learning model (**LightGBM LambdaMART**) to perfectly order those 50 items based on User Segment, Time, and Value.
 
 ---
@@ -44,7 +44,7 @@ This massive expansion allowed for **dense semantic clusters**, ensuring that if
 To solve the "Butter Chicken -> Pizza" hallucination, we implemented a **Strict Cuisine Filter (Stage 0)**:
 1.  The engine detects the **Dominant Region** of your cart.
 2.  It strictly restricts Stage 1 candidates to either that same region OR global entities (Desserts/Beverages).
-3.  *Result:* Zero cultural mismatch. A high-fidelity experience that respects a user's culinary intent.
+3.  *Result:* Strong cultural alignment with minimal cross-cuisine noise. A high-fidelity experience that respects a user's culinary intent.
 
 ---
 
