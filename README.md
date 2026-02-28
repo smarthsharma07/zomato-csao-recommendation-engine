@@ -1,5 +1,4 @@
-# 📖 Zomato CSAO: The Narrative Journey
-## *Building a Culturally Intelligent Recommendation Engine*
+# 🍽️ Zomato CSAO Recommendation Engine
 
 Welcome to the transcript and step-by-step chronicle of the **Zomato Cross-Selling & Add-on Optimization (CSAO)** project. This is not just a repository; it is a tutorial on how we moved from a generic recommendation model to a production-grade, culturally anchored engine.
 
@@ -18,7 +17,7 @@ At the start of this project, we faced a classic "Generic Fallback" problem. Wit
 ### 🏗️ Chapter 1: The Two-Stage Blueprint
 To achieve intelligence at scale, we adopted an industry-standard **Two-Stage Funnel**:
 
-1.  **Stage 1 - Retrieval:** Narrowing down the ~300 synthetic menu items across 7 cuisines universe to the Top 50 best candidates using high-speed vector math.
+1.  **Stage 1 - Retrieval:** Narrowing down the 300-item universe to the Top 50 best candidates using high-speed vector math.
 2.  **Stage 2 - Ranking:** Using a heavy-duty Machine Learning model (**LightGBM LambdaMART**) to perfectly order those 50 items based on User Segment, Time, and Value.
 
 ---
@@ -44,7 +43,7 @@ This massive expansion allowed for **dense semantic clusters**, ensuring that if
 To solve the "Butter Chicken -> Pizza" hallucination, we implemented a **Strict Cuisine Filter (Stage 0)**:
 1.  The engine detects the **Dominant Region** of your cart.
 2.  It strictly restricts Stage 1 candidates to either that same region OR global entities (Desserts/Beverages).
-3.  *Result:* Strong cultural alignment with minimal cross-cuisine noise. A high-fidelity experience that respects a user's culinary intent.
+3.  *Result:* Zero cultural mismatch. A high-fidelity experience that respects a user's culinary intent.
 
 ---
 
@@ -58,7 +57,7 @@ Final refinements were added to ensure the output wasn't just accurate, but **pr
 ### 📊 Epilogue: The Outcome
 After 12 phases of development, the final model delivered:
 *   **AUC Score:** `0.8489` (Strong predictive quality).
-*   **HitRate @ 8:** `95.40%` (High-fidelity matching in a 300+ item universe).
+*   **HitRate @ 8:** `30.40%` (High-fidelity matching in a 300+ item universe).
 *   **Latency:** `~156 ms` (Blazing fast per-request inference).
 
 ---
