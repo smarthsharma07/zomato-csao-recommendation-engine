@@ -4,7 +4,7 @@ Welcome to the technical documentation for our Zomato Cross-Selling and Add-on O
 
 ## The AI Edge (Differentiator)
 
-Our architecture explicitly leverages modern Foundational Large Language Models (LLMs) to natively solve the unstructured data problem that plagues traditional Recommendation Systems.
+Our architecture explicitly leverages modern Pretrained Transformer-based Semantic Embedding Model to natively solve the unstructured data problem that plagues traditional Recommendation Systems.
 
 Instead of relying on rigid, pre-programmed Database foreign-keys or fragile exact-string matching to map complementary items, our engine passes the cart contents through **`all-MiniLM-L6-v2` (a Sentence Transformer LLM)**. 
 
