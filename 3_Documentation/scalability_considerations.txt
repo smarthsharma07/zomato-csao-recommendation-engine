@@ -18,3 +18,9 @@ To ensure the recommendation system can handle millions of daily prediction requ
 
 ## 4. Data Freshness
 - The training pipeline script (`generate_synthetic_data.py`) generates a temporal split of behavior over a rolling 90-day window. The LightGBM feature weights are designed to be efficiently retrained on weekly cron-jobs to consistently learn new shifting culinary trends over time.
+
+## 5. Enterprise Infrastructure Scale (Millions of Items)
+While the MVP logic relies on an in-memory `cosine_similarity` sweep across 300 items, this is substituted for robust enterprise infrastructure at Zomato scale:
+- **Vector Databases (FAISS / Milvus):** The Stage-1 retrieval sweep is transitioned into an Approximate Nearest Neighbors (ANN) clustered search. This enables the Stage-1 embedding sweep to evaluate 1,000,000+ items and return the 50 candidates in < 10ms.
+- **Centralized Feature Stores (Redis):** Calculating rolling window features (e.g., User Veg Ratio) on the fly represents unnecessary block-time. In production, these features are asynchronously computed nightly by Spark pipelines and loaded into an ultra-fast Redis Feature Store. The live endpoint simply pulls `redis.get(user_id_features)` instantly when constructing the LightGBM input array.
+- **Asynchronous Embeddings:** Distilling new menu item text-descriptions into `all-MiniLM-L6-v2` dense 384d vectors is executed asynchronously off the main thread by background workers when restaurants update their menus.

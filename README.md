@@ -114,4 +114,15 @@ Open your web browser and navigate to:
 You will be greeted by a clean Zomato-themed UI. Type in a sample cart like `Butter Chicken, Garlic Naan` and watch the Two-Stage ML engine return culturally matched add-ons in less than 200 milliseconds!
 
 ---
+
+## 🌍 Enterprise Scalability (From MVP to Production)
+
+While this MVP is built on an in-memory graph of ~300 items, the core Two-Stage ML Architecture is explicitly designed to scale to Zomato's real-world infrastructure (millions of users, millions of items) seamlessly.
+
+1. **The Data Pipeline:** Instead of synthetic local CSVs, item metadata and order log histories will stream directly from Zomato's S3 Data Lakes or Snowflake.
+2. **Retrieval at Scale (The Vector DB):** In production, our in-memory `cosine_similarity` search is replaced by an **ANN (Approximate Nearest Neighbors) Vector Database** like **FAISS, Milvus, or Qdrant**. This allows the engine to instantly retrieve the top 50 matches from a catalog of *billions* of dishes in under 10ms.
+3. **Ranking at Scale (The Feature Store):** Instead of calculating user variables (Veg-ratio, time_of_day) on the fly, these are precomputed by distributed background pipelines and stored in an ultra-fast in-memory **Feature Store (e.g., Redis)**. The LightGBM ranker simply fetches these precalculated features via memory keys for instantaneous inference.
+4. **Asynchronous Embeddings:** Generating dense vectors for new menu items using `all-MiniLM` is handled asynchronously by nightly **Apache Airflow / Spark** batch jobs, completely protecting the live API's latency budget.
+
+---
 *Built for the Zomato CSAO Hackathon.*
