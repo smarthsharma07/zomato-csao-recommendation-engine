@@ -135,3 +135,4 @@ While this MVP is built on an in-memory graph of ~300 items, the core Two-Stage 
 
 ---
 *Built for the Zomato CSAO Hackathon.*
+## MIT License © 2026 Smarth Sharma
